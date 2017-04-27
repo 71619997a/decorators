@@ -1,0 +1,9 @@
+from time import time
+
+def verbose(f):
+    def wrapped(*args, **kwargs):
+        print f.func_name, 'called with args:', args, 'and keyword args:', kwargs
+        a = time()
+        print 'Executing', f.func_name + '...'
+        ret = f(*args, **kwargs)
+        print 'Finished execution of', f.func_name + '. Execution time = %d ms.' % int((time() - a) / 1000)
