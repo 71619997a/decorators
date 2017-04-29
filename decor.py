@@ -37,16 +37,15 @@ def test3(a, b, c, d=5, e=6, f=7):
     return a
 
 @verbose
-def fib(n, cache={0: 0, 1: 1}):
-    print n
-    if n in cache:
-        return cache[n]
-    val = fib(n - 2, cache=cache) + fib(n - 1, cache=cache)
-    cache[n] = val
-    return val
+def fib(n):
+    if n < 1:
+        return 0
+    if n < 3:  # hardcode n=2 b/c the example did that
+        return 1
+    return fib(n - 2) + fib(n - 1)
     
 
 print test2(1, 2, 3, 4, **{'e': 7, 'f':10})
 print test3(1, 2, 3, 4, **{'e': 7, 'f':10})
 print testF(1, 2, 3, 4, **{'e': 7, 'f':10})
-print fib(50)
+print fib(5)
