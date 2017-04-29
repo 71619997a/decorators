@@ -20,29 +20,28 @@ def timer(f):
 @verbose
 @timer
 def testF(a, b, c, d=5, e=6, f=7):
-    for i in range(1000000000):
+    for i in range(100000000):
         a += b + c + d + e + f
     return a
 
 @timer
 def test2(a, b, c, d=5, e=6, f=7):
-    for i in range(1000000000):
+    for i in range(100000000):
         a += b + c + d + e + f
     return a
 
 @verbose
 def test3(a, b, c, d=5, e=6, f=7):
-    for i in range(1000000000):
+    for i in range(100000000):
         a += b + c + d + e + f
     return a
 
 @verbose
-@timer
 def fib(n, cache={0: 0, 1: 1}):
     print n
     if n in cache:
         return cache[n]
-    val = fib(n - 1, cache) + fib(n - 2, cache)
+    val = fib(n - 2, cache=cache) + fib(n - 1, cache=cache)
     cache[n] = val
     return val
     
